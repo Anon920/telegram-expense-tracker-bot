@@ -1,0 +1,9 @@
+[Unit]
+Description=Back up the expenses database
+
+[Service]
+Type=oneshot
+User=expensesbot
+Group=expensesbot
+UMask=0077
+ExecStart=/opt/expenses-bot/.venv/bin/python /opt/expenses-bot/deploy/backup.py

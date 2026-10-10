@@ -1,0 +1,22 @@
+[Unit]
+Description=Personal Telegram expenses bot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=expensesbot
+Group=expensesbot
+WorkingDirectory=/opt/expenses-bot
+Environment=PYTHONUNBUFFERED=1
+Environment=CODEX_BIN=/usr/local/bin/codex
+ExecStart=/opt/expenses-bot/.venv/bin/python /opt/expenses-bot/bot.py
+Restart=always
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

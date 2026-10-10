@@ -1,0 +1,18 @@
+[Unit]
+Description=Wallet transaction inbox (localhost only)
+After=network.target
+
+[Service]
+User=expensesbot
+Group=expensesbot
+WorkingDirectory=/opt/expenses-bot
+ExecStart=/opt/expenses-bot/.venv/bin/python /opt/expenses-bot/wallet_bridge.py
+Restart=always
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
